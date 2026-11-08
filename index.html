@@ -422,11 +422,23 @@
 <script>
 const DATA_URL = "https://script.google.com/macros/s/AKfycbzG9WpDIOKBoyABH-mf2JgiEvAuKVQU22iV6Fz39iuP6Snav4pI-8svXjpuJTeW8FFf/exec";
 const normDate = v => {
-  if (typeof v === "string" && /Z$/.test(v)) {
-    const d = new Date(new Date(v).getTime() - new Date(v).getTimezoneOffset() * 60000);
+  if (v === null || v === undefined || v === "") return "";
+  if (typeof v === "number" && Number.isFinite(v)) {
+    const d = new Date(Date.UTC(1899, 11, 30) + Math.round(v * 86400000));
+    return Number.isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 19).replace("T", " ");
+  }
+  if (v instanceof Date) {
+    return Number.isNaN(v.getTime()) ? "" : v.toISOString().slice(0, 19).replace("T", " ");
+  }
+  const text = String(v).trim();
+  if (/^\d+(?:\.\d+)?$/.test(text)) return normDate(Number(text));
+  const parsed = new Date(text.replace(" ", "T"));
+  if (Number.isNaN(parsed.getTime())) return text;
+  if (/Z$/.test(text)) {
+    const d = new Date(parsed.getTime() - parsed.getTimezoneOffset() * 60000);
     return d.toISOString().slice(0, 19).replace("T", " ");
   }
-  return v;
+  return text.slice(0, 19).replace("T", " ");
 };
 
 /* ---------- Theme ---------- */
