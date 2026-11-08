@@ -216,7 +216,7 @@
   .hd-actions{align-self:flex-start;flex-wrap:wrap}
     main{padding:12px 18px 44px}
     .card{padding:16px}
-    nav.dashboard-nav{display:block;padding:5px}
+    nav.dashboard-nav{display:block;height:0;margin:0;padding:0;border-color:transparent;background:transparent;box-shadow:none;overflow:visible}
     nav.dashboard-nav .menu-toggle{display:flex;position:fixed;top:12px;right:12px;z-index:45;width:auto;justify-content:center;padding:10px 14px;font-size:1rem;background:var(--card);border-color:var(--border);box-shadow:var(--shadow)}
     nav.dashboard-nav .menu-toggle .menu-icon{font-size:1.08rem}
     nav.dashboard-nav > button[role="tab"]{display:none;width:100%;min-height:44px;text-align:left}
@@ -235,6 +235,8 @@
     #tab-operations .toolbar > input,#tab-olog .toolbar > input{flex-basis:100%;min-width:0}
     #tab-operations .toolbar .count,#tab-olog .toolbar .count{width:100%}
     #tab-operations .toolbar .tool-btn,#tab-olog .toolbar .tool-btn{flex:1;min-width:0}
+    #tab-operations .period-filter,#tab-olog .period-filter,#tab-monthly .period-filter{display:flex;width:100%;min-height:44px}
+    #tab-operations .period-filter select,#tab-operations .period-filter input,#tab-olog .period-filter select,#tab-olog .period-filter input,#tab-monthly .period-filter select{flex:1;min-width:0}
     #tab-calendar .toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     #tab-calendar #calLabel{grid-column:1/-1;min-width:0!important;order:-1;width:100%}
     #tab-calendar #calMonth,#tab-calendar #calSummary{width:100%;min-width:0}
@@ -243,7 +245,7 @@
     #tab-calendar #calendar .cal-grid{min-width:560px}
     .chart-wrap{height:280px}
     .cal-grid{gap:4px}
-    .cal-day{padding:6px 4px;min-height:68px;overflow:hidden}
+    .cal-day{padding:9px 7px;min-height:76px;overflow:hidden}
     .cal-day .dval{font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .cal-day .dcnt{font-size:.62rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   }
